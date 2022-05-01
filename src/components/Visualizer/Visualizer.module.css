@@ -1,0 +1,15 @@
+.VisualizerContainer {
+  flex-grow: 1;
+  background-color: #1a1c30;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Visualizer {
+  height: 40vh;
+  width: 100%;
+  margin: 20px;
+  border: 1px solid lightgray;
+}

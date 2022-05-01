@@ -1,7 +1,7 @@
-import styles from "./App.module.css";
+import Main from "./components/Main";
 
 function App() {
-  return <main class={styles.App}></main>;
+  return <Main />;
 }
 
 export default App;
