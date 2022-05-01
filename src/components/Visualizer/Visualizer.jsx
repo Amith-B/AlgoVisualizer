@@ -85,7 +85,7 @@ function Visualizer() {
   });
 
   const getColorList = createMemo(() => {
-    return generateHslaColors(50, 40, 1.0, arr().length);
+    return generateHslaColors(50, 50, 1.0, arr().length);
   });
 
   const getBarWidth = createMemo(() => {
