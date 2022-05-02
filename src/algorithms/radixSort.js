@@ -1,4 +1,5 @@
 function radixSort(inputArr, swapList) {
+  // TODO: replace below code with actual algorithm, below code is bubble sort
   let len = inputArr.length;
   let checked;
   do {
