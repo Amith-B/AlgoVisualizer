@@ -22,7 +22,7 @@ function Header() {
       <Modal open={showModal()} triggerClose={handleModalToggle} />
       <header class={styles.Header}>
         <h3>AlgoVisualizer</h3>
-        <button class="controls" onClick={handleModalToggle}>
+        <button class="controls" onClick={handleModalToggle} title="Settings">
           <span class="material-symbols-outlined">settings</span>
         </button>
       </header>
