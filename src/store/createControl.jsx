@@ -51,6 +51,7 @@ function createControl() {
 
       if (currentIndex === totalSteps - 1) {
         clearInterval(timmerRef());
+        setPlaying(false);
         return;
       }
 
