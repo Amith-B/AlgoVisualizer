@@ -1,21 +1,61 @@
-function quickSort(inputArr, swapList) {
-  // TODO: replace below code with actual algorithm, below code is bubble sort
-  let len = inputArr.length;
-  let checked;
-  do {
-    checked = false;
-    for (let i = 0; i < len; i++) {
-      if (inputArr[i] > inputArr[i + 1]) {
-        [inputArr[i], inputArr[i + 1]] = [inputArr[i + 1], inputArr[i]];
-        swapList.push([i, i + 1]);
-        checked = true;
-      }
+let swapList = [];
+
+function swap(arr, i, j) {
+  [arr[i], arr[j]] = [arr[j], arr[i]];
+
+  if (i !== j) {
+    swapList.push([i, j]);
+  }
+}
+
+/* This function takes last element as pivot, places
+ the pivot element at its correct position in sorted
+ array, and places all smaller (smaller than pivot)
+ to left of pivot and all greater elements to right
+ of pivot */
+function partition(arr, low, high) {
+  // pivot
+  let pivot = arr[high];
+
+  // Index of smaller element and
+  // indicates the right position
+  // of pivot found so far
+  let i = low - 1;
+
+  for (let j = low; j <= high - 1; j++) {
+    // If current element is smaller
+    // than the pivot
+    if (arr[j] < pivot) {
+      // Increment index of
+      // smaller element
+      i++;
+      swap(arr, i, j);
     }
-  } while (checked);
+  }
+  swap(arr, i + 1, high);
+  return i + 1;
+}
+
+/* The main function that implements QuickSort
+        arr[] --> Array to be sorted,
+        low --> Starting index,
+        high --> Ending index
+*/
+function quickSort(arr, low, high) {
+  if (low < high) {
+    // pi is partitioning index, arr[p]
+    // is now at right place
+    let pi = partition(arr, low, high);
+
+    // Separately sort elements before
+    // partition and after partition
+    quickSort(arr, low, pi - 1);
+    quickSort(arr, pi + 1, high);
+  }
 }
 
 export default function sort(inputArr) {
-  const swapList = [];
-  quickSort([...inputArr], swapList);
+  swapList = [];
+  quickSort([...inputArr], 0, inputArr.length - 1);
   return swapList;
 }
