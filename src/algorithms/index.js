@@ -10,6 +10,7 @@ import cocktail_sort from "./cocktailSort";
 import pancake_sort from "./pancakeSort";
 import gnome_sort from "./gnomeSort";
 import odd_even_sort from "./oddEvenSort";
+import stooge_sort from "./stoogeSort";
 
 // algorithm source code are from: https://www.geeksforgeeks.org/sorting-algorithms/?ref=shm
 export default {
@@ -25,4 +26,5 @@ export default {
   pancake_sort,
   gnome_sort,
   odd_even_sort,
+  stooge_sort,
 };
