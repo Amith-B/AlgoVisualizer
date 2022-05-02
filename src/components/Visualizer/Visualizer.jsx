@@ -78,9 +78,10 @@ function Visualizer() {
             >
               <svg viewBox="0 0 56 18">
                 <text
-                  x="35%"
+                  x="50%"
                   y="50%"
                   dominant-baseline="middle"
+                  text-anchor="middle"
                   style="fill: white;"
                 >
                   {i + 1}
