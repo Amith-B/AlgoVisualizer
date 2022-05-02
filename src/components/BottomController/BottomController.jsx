@@ -48,13 +48,6 @@ function BottomController({ triggerBottomSheetOpen }) {
     return selectedAlgorithm.algoName;
   });
 
-  const getStepCompletionPercentage = () => {
-    const completed = currentStep() + 1;
-    const total = totalStep();
-    const stepCompletionPercentage = (completed / total) * 100;
-    return stepCompletionPercentage;
-  };
-
   const handleSlideClick = (event) => {
     const selectedValue = Number(event.target.value);
     setCurrentStep(selectedValue);
@@ -65,9 +58,6 @@ function BottomController({ triggerBottomSheetOpen }) {
       <Show when={selectedAlgo()}>
         <input
           class={styles.Slider}
-          style={{
-            background: `linear-gradient(to right, #ffbc42 0%, #ffbc42 ${getStepCompletionPercentage()}%, white ${getStepCompletionPercentage()}%, white 100%)`,
-          }}
           type="range"
           min={0}
           max={totalStep() - 1}
