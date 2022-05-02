@@ -5,6 +5,7 @@ import insertion_sort from "./insertionSort";
 import merge_sort from "./mergeSort";
 import heap_sort from "./heapSort";
 import comb_sort from "./combSort";
+import cycle_sort from "./cycleSort";
 
 export default {
   bubble_sort,
@@ -14,4 +15,5 @@ export default {
   merge_sort,
   heap_sort,
   comb_sort,
+  cycle_sort,
 };
