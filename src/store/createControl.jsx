@@ -62,6 +62,7 @@ function createControl() {
   const clearTimmer = () => {
     if (timmerRef()) {
       clearInterval(timmerRef());
+      setTimmerRef(undefined);
     }
   };
 
