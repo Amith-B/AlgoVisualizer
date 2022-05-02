@@ -41,9 +41,10 @@ code {
   height: 6px;
   background: #d3d3d3;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.9;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
+  cursor: pointer;
 }
 
 #slider-range:hover {
@@ -57,12 +58,10 @@ code {
   height: 20px;
   border-radius: 50%;
   background: #ffbc42;
-  cursor: pointer;
 }
 
 #slider-range::-moz-range-thumb {
   width: 10px;
   height: 10px;
   background: #ffbc42;
-  cursor: pointer;
 }
