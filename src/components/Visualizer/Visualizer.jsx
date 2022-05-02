@@ -1,5 +1,12 @@
 import styles from "./Visualizer.module.css";
-import { createSignal, createEffect, Index, createMemo } from "solid-js";
+import {
+  createSignal,
+  createEffect,
+  Index,
+  createMemo,
+  onMount,
+  onCleanup,
+} from "solid-js";
 import controls from "../../store/createControl";
 
 function Visualizer() {
@@ -12,12 +19,7 @@ function Visualizer() {
 
   let vsRef;
   createEffect(() => {
-    const { width, height } = vsRef.getBoundingClientRect();
-
-    setVisualizerSize({
-      width: width - 2,
-      height: height - 2,
-    });
+    updateVisualizerSize();
   });
 
   const getArrayLength = createMemo(() => {
@@ -27,6 +29,21 @@ function Visualizer() {
   const getBarWidth = createMemo(() => {
     return visualizerSize().width / getArrayLength();
   });
+
+  onMount(() => {
+    window.addEventListener("resize", updateVisualizerSize);
+
+    onCleanup(() => window.removeEventListener("resize", updateVisualizerSize));
+  });
+
+  const updateVisualizerSize = () => {
+    const { width, height } = vsRef.getBoundingClientRect();
+
+    setVisualizerSize({
+      width: width - 2,
+      height: height - 2,
+    });
+  };
 
   return (
     <section class={styles.VisualizerContainer}>
