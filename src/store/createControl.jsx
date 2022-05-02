@@ -2,16 +2,16 @@ import { createSignal, createRoot, createEffect, createMemo } from "solid-js";
 import algos from "../algorithms";
 import { getAlgoList } from "../utils/stringUtil";
 import { generateHslaColors } from "../utils/colorUtil";
+import { getStepWiseArray } from "../utils/arrayUtil";
 
 function createControl() {
   const [algoList] = createSignal(getAlgoList(algos));
   const [totalStep, setTotalStep] = createSignal(0);
   const [currentStep, setCurrentStep] = createSignal(0);
-  const [intervalMs, setIntervalMs] = createSignal(500);
+  const [intervalMs, setIntervalMs] = createSignal(100);
   const [playing, setPlaying] = createSignal(false);
   const [shuffledArr, setShuffledArr] = createSignal([]);
-  const [partialSortedArr, setPartialSortedArr] = createSignal([]);
-  const [swapList, setSwapList] = createSignal([]);
+  const [stepWiseArray, setStepWiseArray] = createSignal([]);
   const [selectedAlgo, setSelectedAlgo] = createSignal("");
   const [colorList, setColorList] = createSignal([]);
 
@@ -21,15 +21,10 @@ function createControl() {
 
     if (algoFunction && arr.length) {
       const swapData = algoFunction(arr);
-      console.log(
-        "swapData",
-        arr.map((d) => d + 1),
-        swapData
-      );
-      setSwapList(swapData);
-      setCurrentStep(0);
-      setTotalStep(swapData.length);
-      setPartialSortedArr(arr);
+      const stepWiseArr = getStepWiseArray(arr, swapData);
+      setStepWiseArray(stepWiseArr);
+      setCurrentStep(-1);
+      setTotalStep(stepWiseArr.length);
       setPlaying(false);
       setColorList(getColorList(arr.length));
     }
@@ -57,11 +52,8 @@ function createControl() {
     shuffledArr,
     setShuffledArr,
 
-    partialSortedArr,
-    setPartialSortedArr,
-
-    swapList,
-    setSwapList,
+    stepWiseArray,
+    setStepWiseArray,
 
     selectedAlgo,
     setSelectedAlgo,

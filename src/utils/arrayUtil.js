@@ -12,3 +12,16 @@ export function shuffleArray(array) {
   }
   return arr;
 }
+
+export function getStepWiseArray(arr, swapList) {
+  const partialSortedArr = [...arr];
+  const stepWiseArr = [];
+  swapList.forEach(([leftIndex, rightIndex]) => {
+    [partialSortedArr[leftIndex], partialSortedArr[rightIndex]] = [
+      partialSortedArr[rightIndex],
+      partialSortedArr[leftIndex],
+    ];
+    stepWiseArr.push([...partialSortedArr]);
+  });
+  return stepWiseArr;
+}

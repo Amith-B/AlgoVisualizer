@@ -3,7 +3,8 @@ import { createSignal, createEffect, Index, createMemo } from "solid-js";
 import controls from "../../store/createControl";
 
 function Visualizer() {
-  const { partialSortedArr, colorList, intervalMs } = controls;
+  const { stepWiseArray, currentStep, shuffledArr, colorList, intervalMs } =
+    controls;
   const [visualizerSize, setVisualizerSize] = createSignal({
     width: 0,
     height: 0,
@@ -19,8 +20,12 @@ function Visualizer() {
     });
   });
 
+  const getArrayLength = createMemo(() => {
+    return shuffledArr().length;
+  });
+
   const getBarWidth = createMemo(() => {
-    return visualizerSize().width / partialSortedArr().length;
+    return visualizerSize().width / getArrayLength();
   });
 
   return (
@@ -31,7 +36,9 @@ function Visualizer() {
         style={`--duration: ${intervalMs()}ms`}
       >
         <Index
-          each={partialSortedArr()}
+          each={
+            currentStep() >= 0 ? stepWiseArray()[currentStep()] : shuffledArr()
+          }
           fallback={
             <div class={styles.EmptySelection}>
               Please select the algorithm by clicking Bottom Bar
@@ -44,12 +51,11 @@ function Visualizer() {
               style={{
                 background: colorList()[i],
                 transform: `translate(${
-                  (visualizerSize().width / partialSortedArr().length) * item()
+                  (visualizerSize().width / getArrayLength()) * item()
                 }px, 0)`,
                 width: `${getBarWidth()}px`,
                 height: `${
-                  (visualizerSize().height / partialSortedArr().length) *
-                  (i + 1)
+                  (visualizerSize().height / getArrayLength()) * (i + 1)
                 }px`,
               }}
             >
