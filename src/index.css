@@ -61,7 +61,7 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: grey;
+  background: var(--primary);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
