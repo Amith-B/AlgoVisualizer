@@ -8,6 +8,7 @@ import comb_sort from "./combSort";
 import cycle_sort from "./cycleSort";
 import cocktail_sort from "./cocktailSort";
 import pancake_sort from "./pancakeSort";
+import gnome_sort from "./gnomeSort";
 
 export default {
   bubble_sort,
@@ -20,4 +21,5 @@ export default {
   cycle_sort,
   cocktail_sort,
   pancake_sort,
+  gnome_sort,
 };
