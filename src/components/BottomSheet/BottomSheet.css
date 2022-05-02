@@ -44,6 +44,8 @@ ul.algo-list li {
   align-items: center;
   font-size: 1.1rem;
   font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px solid #80808075;
 }
 
 ul.algo-list li.selected {
