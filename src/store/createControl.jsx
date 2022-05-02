@@ -1,6 +1,7 @@
-import { createSignal, createRoot } from "solid-js";
+import { createSignal, createRoot, createEffect, createMemo } from "solid-js";
 import algos from "../algorithms";
 import { getAlgoList } from "../utils/stringUtil";
+import { generateHslaColors } from "../utils/colorUtil";
 
 function createControl() {
   const [algoList] = createSignal(getAlgoList(algos));
@@ -12,6 +13,27 @@ function createControl() {
   const [partialSortedArr, setPartialSortedArr] = createSignal([]);
   const [swapList, setSwapList] = createSignal([]);
   const [selectedAlgo, setSelectedAlgo] = createSignal("");
+  const [colorList, setColorList] = createSignal([]);
+
+  createEffect(() => {
+    const algoFunction = algos[selectedAlgo()];
+    const arr = shuffledArr();
+
+    if (algoFunction && arr.length) {
+      const swapData = algoFunction(arr);
+      console.log("swapData", arr, swapData);
+      setSwapList(swapData);
+      setCurrentStep(0);
+      setTotalStep(swapData.length);
+      setPartialSortedArr(arr);
+      setPlaying(false);
+      setColorList(getColorList(arr.length));
+    }
+  });
+
+  const getColorList = (arrLength) => {
+    return generateHslaColors(50, 50, 1.0, arrLength);
+  };
 
   return {
     algoList,
@@ -39,6 +61,9 @@ function createControl() {
 
     selectedAlgo,
     setSelectedAlgo,
+
+    colorList,
+    setColorList,
   };
 }
 
