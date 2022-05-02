@@ -3,6 +3,7 @@ import selection_sort from "./selectionSort";
 import quick_sort from "./quickSort";
 import insertion_sort from "./insertionSort";
 import merge_sort from "./mergeSort";
+import heap_sort from "./heapSort";
 
 export default {
   bubble_sort,
@@ -10,4 +11,5 @@ export default {
   quick_sort,
   insertion_sort,
   merge_sort,
+  heap_sort,
 };
