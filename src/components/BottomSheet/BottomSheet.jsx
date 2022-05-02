@@ -16,6 +16,7 @@ function BottomSheet(props) {
       <div
         classList={{
           "bottom-sheet": true,
+          "blur-modal": true,
           "bottom-sheet__open": props.open,
         }}
       >

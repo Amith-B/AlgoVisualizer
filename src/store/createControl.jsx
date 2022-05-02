@@ -3,12 +3,14 @@ import algos from "../algorithms";
 import { getAlgoList } from "../utils/stringUtil";
 import { generateHslaColors } from "../utils/colorUtil";
 import { getStepWiseArray } from "../utils/arrayUtil";
+import { shuffleArray } from "../utils/arrayUtil";
 
 function createControl() {
   const [algoList] = createSignal(getAlgoList(algos));
   const [totalStep, setTotalStep] = createSignal(0);
   const [currentStep, setCurrentStep] = createSignal(0);
-  const [intervalMs, setIntervalMs] = createSignal(100);
+  const [intervalMs, setIntervalMs] = createSignal(200);
+  const [arraySize, setArraySize] = createSignal(20);
   const [playing, setPlaying] = createSignal(false);
   const [shuffledArr, setShuffledArr] = createSignal([]);
   const [stepWiseArray, setStepWiseArray] = createSignal([]);
@@ -29,6 +31,18 @@ function createControl() {
       setTotalStep(stepWiseArr.length);
       setPlaying(false);
       setColorList(getColorList(arr.length));
+    }
+  });
+
+  createEffect(() => {
+    if (selectedAlgo() && !shuffledArr().length) {
+      setShuffledArr(shuffleArray(Array.from(Array(arraySize()).keys())));
+    }
+  });
+
+  createEffect(() => {
+    if (arraySize()) {
+      setShuffledArr(shuffleArray(Array.from(Array(arraySize()).keys())));
     }
   });
 
@@ -82,6 +96,9 @@ function createControl() {
 
     intervalMs,
     setIntervalMs,
+
+    arraySize,
+    setArraySize,
 
     playing,
     setPlaying,

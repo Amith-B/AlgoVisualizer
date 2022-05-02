@@ -1,11 +1,7 @@
 import styles from "./BottomController.module.css";
-import { createEffect, createMemo, Switch, Show } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import controls from "../../store/createControl";
 import { shuffleArray } from "../../utils/arrayUtil";
-
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
 
 function BottomController({ triggerBottomSheetOpen }) {
   const {
@@ -17,15 +13,8 @@ function BottomController({ triggerBottomSheetOpen }) {
     currentStep,
     setCurrentStep,
     totalStep,
+    arraySize,
   } = controls;
-
-  createEffect(() => {
-    if (selectedAlgo()) {
-      setShuffledArr(
-        shuffleArray(Array.from(Array(getRndInteger(10, 60)).keys()))
-      );
-    }
-  });
 
   const handlePlayToggle = () => {
     setPlaying((playing) => !playing);
@@ -37,9 +26,7 @@ function BottomController({ triggerBottomSheetOpen }) {
   };
 
   const handleShuffle = () => {
-    setShuffledArr(
-      shuffleArray(Array.from(Array(getRndInteger(10, 60)).keys()))
-    );
+    setShuffledArr(shuffleArray(Array.from(Array(arraySize()).keys())));
   };
 
   const getAlgorithmName = createMemo(() => {
