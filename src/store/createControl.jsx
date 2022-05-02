@@ -1,4 +1,4 @@
-import { createSignal, createRoot, createEffect, createMemo } from "solid-js";
+import { createSignal, createRoot, createEffect, untrack } from "solid-js";
 import algos from "../algorithms";
 import { getAlgoList } from "../utils/stringUtil";
 import { generateHslaColors } from "../utils/colorUtil";
@@ -15,6 +15,8 @@ function createControl() {
   const [selectedAlgo, setSelectedAlgo] = createSignal("");
   const [colorList, setColorList] = createSignal([]);
 
+  const [timmerRef, setTimmerRef] = createSignal(undefined);
+
   createEffect(() => {
     const algoFunction = algos[selectedAlgo()];
     const arr = shuffledArr();
@@ -29,6 +31,39 @@ function createControl() {
       setColorList(getColorList(arr.length));
     }
   });
+
+  createEffect(() => {
+    const isPlaying = playing();
+    if (isPlaying) {
+      untrack(startTimmer);
+    } else {
+      untrack(clearTimmer);
+    }
+  });
+
+  const startTimmer = () => {
+    if (timmerRef()) {
+      clearInterval(timmerRef());
+    }
+    const tRef = setInterval(() => {
+      const currentIndex = currentStep();
+      const totalSteps = totalStep();
+
+      if (currentIndex === totalSteps - 1) {
+        clearInterval(timmerRef());
+        return;
+      }
+
+      setCurrentStep(currentIndex + 1);
+    }, intervalMs());
+    setTimmerRef(tRef);
+  };
+
+  const clearTimmer = () => {
+    if (timmerRef()) {
+      clearInterval(timmerRef());
+    }
+  };
 
   const getColorList = (arrLength) => {
     return generateHslaColors(50, 50, 1.0, arrLength);
