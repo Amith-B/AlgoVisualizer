@@ -7,6 +7,7 @@ import heap_sort from "./heapSort";
 import comb_sort from "./combSort";
 import cycle_sort from "./cycleSort";
 import cocktail_sort from "./cocktailSort";
+import pancake_sort from "./pancakeSort";
 
 export default {
   bubble_sort,
@@ -18,4 +19,5 @@ export default {
   comb_sort,
   cycle_sort,
   cocktail_sort,
+  pancake_sort,
 };
