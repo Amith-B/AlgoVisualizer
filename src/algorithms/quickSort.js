@@ -1,12 +1,6 @@
+import { swap } from "../utils/arrayUtil";
+
 let swapList = [];
-
-function swap(arr, i, j) {
-  [arr[i], arr[j]] = [arr[j], arr[i]];
-
-  if (i !== j) {
-    swapList.push([i, j]);
-  }
-}
 
 /* This function takes last element as pivot, places
  the pivot element at its correct position in sorted
@@ -29,10 +23,10 @@ function partition(arr, low, high) {
       // Increment index of
       // smaller element
       i++;
-      swap(arr, i, j);
+      swap(arr, i, j, swapList);
     }
   }
-  swap(arr, i + 1, high);
+  swap(arr, i + 1, high, swapList);
   return i + 1;
 }
 

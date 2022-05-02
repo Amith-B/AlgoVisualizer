@@ -25,3 +25,11 @@ export function getStepWiseArray(arr, swapList) {
   });
   return stepWiseArr;
 }
+
+export function swap(arr, i, j, swapList) {
+  [arr[i], arr[j]] = [arr[j], arr[i]];
+
+  if (i !== j) {
+    swapList.push([i, j]);
+  }
+}

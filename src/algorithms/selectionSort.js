@@ -1,12 +1,6 @@
+import { swap } from "../utils/arrayUtil";
+
 let swapList = [];
-
-function swap(arr, i, j) {
-  [arr[i], arr[j]] = [arr[j], arr[i]];
-
-  if (i !== j) {
-    swapList.push([i, j]);
-  }
-}
 
 function selectionSort(arr, n) {
   var i, j, min_idx;
@@ -18,7 +12,7 @@ function selectionSort(arr, n) {
     for (j = i + 1; j < n; j++) if (arr[j] < arr[min_idx]) min_idx = j;
 
     // Swap the found minimum element with the first element
-    swap(arr, min_idx, i);
+    swap(arr, min_idx, i, swapList);
   }
 }
 export default function sort(inputArr) {

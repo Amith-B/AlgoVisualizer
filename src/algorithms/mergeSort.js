@@ -1,18 +1,11 @@
+import { swap } from "../utils/arrayUtil";
+
 let swapList = [];
 
 // Calculating next gap
 function nextGap(gap) {
   if (gap <= 1) return 0;
   return Math.floor(Math.ceil(gap / 2.0));
-}
-
-// Function for swapping
-function swap(nums, i, j) {
-  [nums[i], nums[j]] = [nums[j], nums[i]];
-
-  if (i !== j) {
-    swapList.push([i, j]);
-  }
 }
 
 // Merging the subarrays using shell sorting
@@ -23,7 +16,7 @@ function inPlaceMerge(nums, start, end) {
   for (gap = nextGap(gap); gap > 0; gap = nextGap(gap)) {
     for (let i = start; i + gap <= end; i++) {
       let j = i + gap;
-      if (nums[i] > nums[j]) swap(nums, i, j);
+      if (nums[i] > nums[j]) swap(nums, i, j, swapList);
     }
   }
 }

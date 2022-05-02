@@ -1,12 +1,6 @@
+import { swap } from "../utils/arrayUtil";
+
 let swapList = [];
-
-function swap(arr, i, j) {
-  [arr[i], arr[j]] = [arr[j], arr[i]];
-
-  if (i !== j) {
-    swapList.push([i, j]);
-  }
-}
 
 // To heapify a subtree rooted with node i which is
 // an index in arr[]. n is size of heap
@@ -23,7 +17,7 @@ function heapify(arr, n, i) {
 
   // If largest is not root
   if (largest != i) {
-    swap(arr, i, largest);
+    swap(arr, i, largest, swapList);
 
     // Recursively heapify the affected sub-tree
     heapify(arr, n, largest);
@@ -39,7 +33,7 @@ function heapSort(arr) {
   // One by one extract an element from heap
   for (var i = n - 1; i > 0; i--) {
     // Move current root to end
-    swap(arr, 0, i);
+    swap(arr, 0, i, swapList);
 
     // call max heapify on the reduced heap
     heapify(arr, i, 0);
