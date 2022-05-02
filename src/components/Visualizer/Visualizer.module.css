@@ -21,7 +21,7 @@
   place-content: center;
   place-items: center;
   position: absolute;
-  transition: all 0.5s ease;
+  transition: all var(--duration) ease;
 }
 
 .EmptySelection {

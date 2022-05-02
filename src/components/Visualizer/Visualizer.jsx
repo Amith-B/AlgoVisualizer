@@ -3,7 +3,7 @@ import { createSignal, createEffect, Index, createMemo } from "solid-js";
 import controls from "../../store/createControl";
 
 function Visualizer() {
-  const { partialSortedArr, colorList } = controls;
+  const { partialSortedArr, colorList, intervalMs } = controls;
   const [visualizerSize, setVisualizerSize] = createSignal({
     width: 0,
     height: 0,
@@ -25,7 +25,11 @@ function Visualizer() {
 
   return (
     <section class={styles.VisualizerContainer}>
-      <div class={styles.Visualizer} ref={vsRef}>
+      <div
+        class={styles.Visualizer}
+        ref={vsRef}
+        style={`--duration: ${intervalMs()}ms`}
+      >
         <Index
           each={partialSortedArr()}
           fallback={
