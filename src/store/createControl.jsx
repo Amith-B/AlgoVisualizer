@@ -21,7 +21,11 @@ function createControl() {
 
     if (algoFunction && arr.length) {
       const swapData = algoFunction(arr);
-      console.log("swapData", arr, swapData);
+      console.log(
+        "swapData",
+        arr.map((d) => d + 1),
+        swapData
+      );
       setSwapList(swapData);
       setCurrentStep(0);
       setTotalStep(swapData.length);

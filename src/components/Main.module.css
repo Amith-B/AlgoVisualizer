@@ -8,8 +8,10 @@
 }
 
 .Header {
-  padding: 20px;
+  height: 60px;
   background-color: #1a1c30d5;
-  font-weight: bold;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 20px;
 }
