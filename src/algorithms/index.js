@@ -9,7 +9,9 @@ import cycle_sort from "./cycleSort";
 import cocktail_sort from "./cocktailSort";
 import pancake_sort from "./pancakeSort";
 import gnome_sort from "./gnomeSort";
+import odd_even_sort from "./oddEvenSort";
 
+// algorithm source code are from: https://www.geeksforgeeks.org/sorting-algorithms/?ref=shm
 export default {
   bubble_sort,
   selection_sort,
@@ -22,4 +24,5 @@ export default {
   cocktail_sort,
   pancake_sort,
   gnome_sort,
+  odd_even_sort,
 };
