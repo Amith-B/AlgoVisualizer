@@ -50,20 +50,41 @@ function BottomController({ triggerBottomSheetOpen }) {
 
   return (
     <section class={styles.BottomBar}>
+      <input
+        class={styles.Slider}
+        type="range"
+        min={0}
+        max={totalStep() - 1}
+        value={currentStep()}
+        id="slider-range"
+      />
       <div class={styles.AlgoName} onClick={triggerBottomSheetOpen}>
         {selectedAlgo() ? getAlgorithmName() : "Please Select Algorithm"}
       </div>
+      <Show when={selectedAlgo() && totalStep() !== 0}>
+        <div>
+          {currentStep() + 1}/{totalStep()}
+        </div>
+      </Show>
 
       <Show when={currentStep() !== totalStep() - 1 && selectedAlgo()}>
-        <button onClick={handlePlayToggle}>
-          {playing() ? "Pause" : "Start"}
+        <button onClick={handlePlayToggle} class={styles.Controls}>
+          {playing() ? (
+            <span class="material-symbols-outlined">pause_circle</span>
+          ) : (
+            <span class="material-symbols-outlined">play_circle</span>
+          )}
         </button>
       </Show>
       <Show when={selectedAlgo() && currentStep() !== -1}>
-        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleReset} class={styles.Controls}>
+          <span class="material-symbols-outlined">restart_alt</span>
+        </button>
       </Show>
       <Show when={selectedAlgo() && !playing() && currentStep() === -1}>
-        <button onClick={handleShuffle}>Shuffle</button>
+        <button onClick={handleShuffle} class={styles.Controls}>
+          <span class="material-symbols-outlined">shuffle</span>
+        </button>
       </Show>
     </section>
   );

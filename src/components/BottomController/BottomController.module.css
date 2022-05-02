@@ -4,6 +4,8 @@
   padding: 0 20px;
   display: flex;
   align-items: center;
+  gap: 20px;
+  position: relative;
 }
 
 .AlgoName {
@@ -12,4 +14,19 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.Controls {
+  background: transparent;
+  border: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.Slider {
+  position: absolute;
+  left: 0;
+  top: -6px;
+  width: 100%;
 }
