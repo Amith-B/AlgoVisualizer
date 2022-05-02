@@ -12,9 +12,16 @@ body {
   margin: 0;
   padding: 0;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+:root {
+  --primary: #446b9e;
+  --visualizer: #222222;
+  --secondary: #ffb021;
 }
 
 .material-symbols-outlined {
@@ -84,11 +91,11 @@ code {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #ffbc42;
+  background: var(--secondary);
 }
 
 #slider-range::-moz-range-thumb {
   width: 10px;
   height: 10px;
-  background: #ffbc42;
+  background: var(--secondary);
 }

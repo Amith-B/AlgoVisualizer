@@ -35,7 +35,8 @@ ul.algo-list li {
 }
 
 ul.algo-list li.selected {
-  background-color: rgb(249, 198, 104);
+  background-color: var(--secondary);
+  opacity: 0.9;
   color: black;
   border-radius: 10px;
 }

@@ -1,6 +1,6 @@
 .VisualizerContainer {
   flex-grow: 1;
-  background-color: #1a1c30;
+  background-color: var(--visualizer);
   overflow: auto;
   display: flex;
   justify-content: center;

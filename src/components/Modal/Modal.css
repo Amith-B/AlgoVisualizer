@@ -8,6 +8,7 @@
   transform: translateY(100vh);
   transition: transform 0.5s ease;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .overlay__open ~ .modal {
@@ -21,6 +22,7 @@
   height: 50px;
   padding: 0 15px;
   border-bottom: 1px solid #80808075;
+  background-color: var(--primary);
 }
 
 .modal-body {
