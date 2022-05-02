@@ -17,13 +17,6 @@
   font-size: 1.2rem;
 }
 
-.Controls {
-  background: transparent;
-  border: 0;
-  color: white;
-  cursor: pointer;
-}
-
 .Slider {
   position: absolute;
   left: 0;

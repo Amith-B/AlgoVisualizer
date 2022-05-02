@@ -21,6 +21,13 @@ code {
   font-size: 2rem;
 }
 
+.controls {
+  background: transparent;
+  border: 0;
+  color: white;
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

@@ -3,6 +3,7 @@ import Visualizer from "./Visualizer/Visualizer";
 import BottomController from "./BottomController/BottomController";
 import BottomSheet from "./BottomSheet/BottomSheet";
 import { createSignal } from "solid-js";
+import Header from "./Header/Header";
 
 function Main() {
   const [bottomSheetOpen, setBottomSheetOpen] = createSignal(false);
@@ -13,9 +14,7 @@ function Main() {
 
   return (
     <main class={styles.Main}>
-      <header class={styles.Header}>
-        <h3>AlgoVisualizer</h3>
-      </header>
+      <Header />
       <Visualizer />
       <BottomController
         triggerBottomSheetOpen={() => handleBottomSheetOpen(true)}

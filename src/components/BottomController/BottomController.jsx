@@ -86,7 +86,7 @@ function BottomController({ triggerBottomSheetOpen }) {
       </Show>
 
       <Show when={currentStep() !== totalStep() - 1 && selectedAlgo()}>
-        <button onClick={handlePlayToggle} class={styles.Controls}>
+        <button onClick={handlePlayToggle} class="controls">
           {playing() ? (
             <span class="material-symbols-outlined">pause_circle</span>
           ) : (
@@ -95,12 +95,12 @@ function BottomController({ triggerBottomSheetOpen }) {
         </button>
       </Show>
       <Show when={selectedAlgo() && currentStep() !== -1}>
-        <button onClick={handleReset} class={styles.Controls}>
+        <button onClick={handleReset} class="controls">
           <span class="material-symbols-outlined">restart_alt</span>
         </button>
       </Show>
       <Show when={selectedAlgo() && !playing() && currentStep() === -1}>
-        <button onClick={handleShuffle} class={styles.Controls}>
+        <button onClick={handleShuffle} class="controls">
           <span class="material-symbols-outlined">shuffle</span>
         </button>
       </Show>
