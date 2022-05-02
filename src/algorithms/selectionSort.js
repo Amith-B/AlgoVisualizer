@@ -1,25 +1,28 @@
-function selectionSort(inputArr, swapList) {
-  let n = inputArr.length;
+let swapList = [];
 
-  for (let i = 0; i < n; i++) {
-    // Finding the smallest number in the subarray
-    let min = i;
-    for (let j = i + 1; j < n; j++) {
-      if (inputArr[j] < inputArr[min]) {
-        min = j;
-      }
-    }
-    if (min != i) {
-      // Swapping the elements
-      [inputArr[i], inputArr[min]] = [inputArr[min], inputArr[i]];
-      swapList.push([i, min]);
-    }
+function swap(arr, i, j) {
+  [arr[i], arr[j]] = [arr[j], arr[i]];
+
+  if (i !== j) {
+    swapList.push([i, j]);
   }
-  return inputArr;
 }
 
+function selectionSort(arr, n) {
+  var i, j, min_idx;
+
+  // One by one move boundary of unsorted subarray
+  for (i = 0; i < n - 1; i++) {
+    // Find the minimum element in unsorted array
+    min_idx = i;
+    for (j = i + 1; j < n; j++) if (arr[j] < arr[min_idx]) min_idx = j;
+
+    // Swap the found minimum element with the first element
+    swap(arr, min_idx, i);
+  }
+}
 export default function sort(inputArr) {
-  const swapList = [];
-  selectionSort([...inputArr], swapList);
+  swapList = [];
+  selectionSort([...inputArr], inputArr.length);
   return swapList;
 }
