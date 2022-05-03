@@ -1,10 +1,10 @@
 ### Picture Puzzle
 
-Visit [AlgoVisualizer](https://peaceful-entremet-ce8977.netlify.app/) which is hosted in Netlify
+Visit [AlgoVisualizer](https://algovisualizer-solidjs.netlify.app) which is hosted in Netlify
 
 ### Website link
 <p>
- <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://peaceful-entremet-ce8977.netlify.app/" alt="AlgoVisualizer website link"/> 
+ <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://algovisualizer-solidjs.netlify.app" alt="AlgoVisualizer website link"/> 
 </p>
 
 ## Usage
