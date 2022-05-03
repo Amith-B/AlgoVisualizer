@@ -1,9 +1,9 @@
 import styles from "./Visualizer.module.css";
-import { createSignal, Index, createMemo, onMount, onCleanup } from "solid-js";
+import { createSignal, Index, createMemo, onMount, onCleanup, createEffect } from "solid-js";
 import controls from "../../store/createControl";
 
 function Visualizer() {
-  const { stepWiseArray, currentStep, shuffledArr, colorList, intervalMs } =
+  const { selectedAlgo, stepWiseArray, currentStep, shuffledArr, colorList, intervalMs } =
     controls;
   const [visualizerSize, setVisualizerSize] = createSignal({
     width: 0,
@@ -26,6 +26,12 @@ function Visualizer() {
     window.addEventListener("resize", updateVisualizerSize);
 
     onCleanup(() => window.removeEventListener("resize", updateVisualizerSize));
+  });
+  
+  createEffect(() => {
+    if(selectedAlgo()) {
+      updateVisualizerSize();
+    }
   });
 
   const updateVisualizerSize = () => {
