@@ -1,3 +1,7 @@
+### Picture Puzzle
+
+Visit [AlgoVisualizer](https://peaceful-entremet-ce8977.netlify.app/) which is hosted in Netlify
+
 ## Usage
 
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
