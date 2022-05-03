@@ -32,6 +32,12 @@ ul.algo-list li {
   font-weight: bold;
   cursor: pointer;
   border-bottom: 1px solid #80808075;
+  transition: background 0.2s ease;
+}
+
+ul.algo-list li:hover {
+  background: #80808061;
+  border-radius: 10px;
 }
 
 ul.algo-list li.selected {
