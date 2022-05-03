@@ -58,6 +58,7 @@ code {
 .blur-modal {
   background-color: #35363c7d;
   backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   z-index: 11;
 }
 
