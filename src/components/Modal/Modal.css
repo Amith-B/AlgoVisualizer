@@ -28,7 +28,7 @@
 .modal-body {
   width: 100%;
   height: calc(100% - 50px);
-  padding: 15px;
+  padding: 30px 15px;
   overflow: auto;
 }
 
