@@ -1,12 +1,5 @@
 import styles from "./Visualizer.module.css";
-import {
-  createSignal,
-  createEffect,
-  Index,
-  createMemo,
-  onMount,
-  onCleanup,
-} from "solid-js";
+import { createSignal, Index, createMemo, onMount, onCleanup } from "solid-js";
 import controls from "../../store/createControl";
 
 function Visualizer() {
@@ -18,9 +11,6 @@ function Visualizer() {
   });
 
   let vsRef;
-  createEffect(() => {
-    updateVisualizerSize();
-  });
 
   const getArrayLength = createMemo(() => {
     return shuffledArr().length;
@@ -31,6 +21,8 @@ function Visualizer() {
   });
 
   onMount(() => {
+    updateVisualizerSize();
+
     window.addEventListener("resize", updateVisualizerSize);
 
     onCleanup(() => window.removeEventListener("resize", updateVisualizerSize));
