@@ -17,6 +17,8 @@ function createControl() {
   const [selectedAlgo, setSelectedAlgo] = createSignal("");
   const [colorList, setColorList] = createSignal([]);
 
+  const [themeColor, setThemeColor] = createSignal("#446b9e");
+
   const [timmerRef, setTimmerRef] = createSignal(undefined);
 
   createEffect(() => {
@@ -114,6 +116,9 @@ function createControl() {
 
     colorList,
     setColorList,
+
+    themeColor,
+    setThemeColor,
   };
 }
 

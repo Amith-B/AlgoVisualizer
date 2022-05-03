@@ -2,7 +2,14 @@ import "./Modal.css";
 import controls from "../../store/createControl";
 
 function Modal(props) {
-  const { intervalMs, setIntervalMs, arraySize, setArraySize } = controls;
+  const {
+    intervalMs,
+    setIntervalMs,
+    arraySize,
+    setArraySize,
+    themeColor,
+    setThemeColor,
+  } = controls;
 
   const handleIntervalChange = (event) => {
     const selectedValue = Number(event.target.value);
@@ -12,6 +19,10 @@ function Modal(props) {
   const handleArrSizeChange = (event) => {
     const selectedValue = Number(event.target.value);
     setArraySize(selectedValue);
+  };
+
+  const handleColorChange = (event) => {
+    setThemeColor(event.target.value);
   };
 
   return (
@@ -35,7 +46,7 @@ function Modal(props) {
             <legend>
               <pre> Interval Milliseconds({intervalMs()}) </pre>
             </legend>
-            <div class="range-container">
+            <div class="input-container">
               <span>10</span>
               <input
                 type="range"
@@ -53,7 +64,7 @@ function Modal(props) {
             <legend>
               <pre> Array Size({arraySize()}) </pre>
             </legend>
-            <div class="range-container">
+            <div class="input-container">
               <span>10</span>
               <input
                 type="range"
@@ -65,6 +76,20 @@ function Modal(props) {
                 onChange={handleArrSizeChange}
               />
               <span>100</span>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>
+              <pre> Theme Color({themeColor()}) </pre>
+            </legend>
+            <div class="input-container">
+              <input
+                type="color"
+                id="themecolor"
+                value={themeColor()}
+                name="theme-color"
+                onChange={handleColorChange}
+              />
             </div>
           </fieldset>
         </section>

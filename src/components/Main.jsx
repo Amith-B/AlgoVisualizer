@@ -8,7 +8,7 @@ import controls from "../store/createControl";
 
 function Main() {
   const [bottomSheetOpen, setBottomSheetOpen] = createSignal(false);
-  const { setPlaying } = controls;
+  const { setPlaying, themeColor } = controls;
 
   const handleBottomSheetOpen = (open) => {
     setBottomSheetOpen(open);
@@ -18,7 +18,12 @@ function Main() {
   };
 
   return (
-    <main class={styles.Main}>
+    <main
+      class={styles.Main}
+      style={{
+        "--primary": themeColor(),
+      }}
+    >
       <Header />
       <Visualizer />
       <BottomController

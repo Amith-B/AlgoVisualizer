@@ -37,13 +37,17 @@ fieldset {
   margin-bottom: 20px;
 }
 
-.range-container {
+.input-container {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.range-container span {
+.input-container span {
   font-size: 0.8rem;
   padding: 0 2px;
+}
+
+#themecolor {
+  width: 100%;
 }
