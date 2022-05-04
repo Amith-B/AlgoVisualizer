@@ -42,10 +42,10 @@ function Modal(props) {
           </button>
         </header>
         <section class="modal-body">
-          <fieldset>
-            <legend>
-              <pre> Interval Milliseconds({intervalMs()}) </pre>
-            </legend>
+          <div class="field">
+            <label for="intervalms">
+              Interval Milliseconds({intervalMs()})
+            </label>
             <div class="input-container">
               <span>10</span>
               <input
@@ -53,35 +53,33 @@ function Modal(props) {
                 min="10"
                 value={intervalMs()}
                 max="2000"
-                id="slider-range"
+                class="slider-range"
+                id="intervalms"
                 name="interval"
                 onChange={handleIntervalChange}
               />
               <span>2000</span>
             </div>
-          </fieldset>
-          <fieldset>
-            <legend>
-              <pre> Array Size({arraySize()}) </pre>
-            </legend>
+          </div>
+          <div class="field">
+            <label for="arrsize">Array Size({arraySize()})</label>
             <div class="input-container">
               <span>10</span>
               <input
+                id="arrsize"
                 type="range"
                 min="10"
                 max="100"
                 value={arraySize()}
-                id="slider-range"
+                class="slider-range"
                 name="arr-size"
                 onChange={handleArrSizeChange}
               />
               <span>100</span>
             </div>
-          </fieldset>
-          <fieldset>
-            <legend>
-              <pre> Theme Color({themeColor()}) </pre>
-            </legend>
+          </div>
+          <div class="field">
+            <label for="themecolor">Theme Color({themeColor()})</label>
             <div class="input-container">
               <input
                 type="color"
@@ -91,7 +89,7 @@ function Modal(props) {
                 onChange={handleColorChange}
               />
             </div>
-          </fieldset>
+          </div>
         </section>
       </div>
     </>

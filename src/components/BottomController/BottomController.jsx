@@ -44,13 +44,12 @@ function BottomController({ triggerBottomSheetOpen }) {
     <section class={styles.BottomBar}>
       <Show when={selectedAlgo()}>
         <input
-          class={styles.Slider}
+          classList={{ [styles.Slider]: true, "slider-range": true }}
           type="range"
           min={0}
           max={totalStep() - 1}
           value={currentStep()}
           onInput={handleSlideClick}
-          id="slider-range"
         />
       </Show>
       <div class={styles.AlgoName} onClick={triggerBottomSheetOpen}>
