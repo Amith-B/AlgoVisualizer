@@ -44,7 +44,7 @@ function Modal(props) {
         <section class="modal-body">
           <div class="field">
             <label for="intervalms">
-              Interval Milliseconds({intervalMs()})
+              Interval Milliseconds ( {intervalMs()} )
             </label>
             <div class="input-container">
               <span>10</span>
@@ -62,7 +62,7 @@ function Modal(props) {
             </div>
           </div>
           <div class="field">
-            <label for="arrsize">Array Size({arraySize()})</label>
+            <label for="arrsize">Array Size ( {arraySize()} )</label>
             <div class="input-container">
               <span>10</span>
               <input
@@ -79,7 +79,7 @@ function Modal(props) {
             </div>
           </div>
           <div class="field">
-            <label for="themecolor">Theme Color({themeColor()})</label>
+            <label for="themecolor">Theme Color ( {themeColor()} )</label>
             <div class="input-container">
               <input
                 type="color"
