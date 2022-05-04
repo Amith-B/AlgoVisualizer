@@ -4,22 +4,44 @@ import { getAlgoList } from "../utils/stringUtil";
 import { generateHslaColors } from "../utils/colorUtil";
 import { getStepWiseArray } from "../utils/arrayUtil";
 import { shuffleArray } from "../utils/arrayUtil";
+import { createStore } from "solid-js/store";
+
+function createLocalStore(initState) {
+  const [state, setState] = createStore(initState);
+  if (localStorage.settings) setState(JSON.parse(localStorage.settings));
+  createEffect(() => (localStorage.settings = JSON.stringify(state)));
+  return [state, setState];
+}
 
 function createControl() {
+  const [state, setState] = createLocalStore({
+    intervalMs: 200,
+    arraySize: 40,
+    themeColor: "#446b9e",
+  });
+
   const [algoList] = createSignal(getAlgoList(algos));
   const [totalStep, setTotalStep] = createSignal(0);
   const [currentStep, setCurrentStep] = createSignal(0);
-  const [intervalMs, setIntervalMs] = createSignal(200);
-  const [arraySize, setArraySize] = createSignal(20);
+  const [intervalMs, setIntervalMs] = createSignal(state.intervalMs);
+  const [arraySize, setArraySize] = createSignal(state.arraySize);
   const [playing, setPlaying] = createSignal(false);
   const [shuffledArr, setShuffledArr] = createSignal([]);
   const [stepWiseArray, setStepWiseArray] = createSignal([]);
   const [selectedAlgo, setSelectedAlgo] = createSignal("");
   const [colorList, setColorList] = createSignal([]);
 
-  const [themeColor, setThemeColor] = createSignal("#446b9e");
+  const [themeColor, setThemeColor] = createSignal(state.themeColor);
 
   const [timmerRef, setTimmerRef] = createSignal(undefined);
+
+  createEffect(() => {
+    setState({
+      intervalMs: intervalMs(),
+      arraySize: arraySize(),
+      themeColor: themeColor(),
+    });
+  });
 
   createEffect(() => {
     const algoFunction = algos[selectedAlgo()];
