@@ -69,13 +69,13 @@ function Modal(props) {
                 id="arrsize"
                 type="range"
                 min="10"
-                max="100"
+                max="200"
                 value={arraySize()}
                 class="slider-range"
                 name="arr-size"
                 onChange={handleArrSizeChange}
               />
-              <span>100</span>
+              <span>200</span>
             </div>
           </div>
           <div class="field">
