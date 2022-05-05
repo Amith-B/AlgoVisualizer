@@ -1,5 +1,7 @@
 import "./Modal.css";
 import controls from "../../store/createControl";
+import { createSignal } from "solid-js";
+import { createEffect } from "solid-js";
 
 function Modal(props) {
   const {
@@ -10,6 +12,27 @@ function Modal(props) {
     themeColor,
     setThemeColor,
   } = controls;
+
+  const [itrMs, setItrMs] = createSignal(0);
+  const [arrSize, setArrSize] = createSignal(0);
+
+  createEffect(() => {
+    setItrMs(intervalMs());
+  });
+
+  createEffect(() => {
+    setArrSize(arraySize());
+  });
+
+  const handleIntervalInput = (event) => {
+    const selectedValue = Number(event.target.value);
+    setItrMs(selectedValue);
+  };
+
+  const handleArrSizeInput = (event) => {
+    const selectedValue = Number(event.target.value);
+    setArrSize(selectedValue);
+  };
 
   const handleIntervalChange = (event) => {
     const selectedValue = Number(event.target.value);
@@ -23,6 +46,14 @@ function Modal(props) {
 
   const handleColorChange = (event) => {
     setThemeColor(event.target.value);
+  };
+
+  const getIntervalPercent = () => {
+    return `${100 - ((itrMs() - 10) / 1990) * 100}%`;
+  };
+
+  const getArrSizePercent = () => {
+    return `${100 - ((arrSize() - 10) / 190) * 100}%`;
   };
 
   return (
@@ -52,10 +83,12 @@ function Modal(props) {
                 type="range"
                 min="10"
                 value={intervalMs()}
+                style={{ "background-position": getIntervalPercent() }}
                 max="2000"
                 class="slider-range"
                 id="intervalms"
                 name="interval"
+                onInput={handleIntervalInput}
                 onChange={handleIntervalChange}
               />
               <span>2000</span>
@@ -70,9 +103,11 @@ function Modal(props) {
                 type="range"
                 min="10"
                 max="200"
+                style={{ "background-position": getArrSizePercent() }}
                 value={arraySize()}
                 class="slider-range"
                 name="arr-size"
+                onInput={handleArrSizeInput}
                 onChange={handleArrSizeChange}
               />
               <span>200</span>

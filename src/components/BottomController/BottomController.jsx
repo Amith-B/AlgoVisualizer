@@ -40,6 +40,10 @@ function BottomController({ triggerBottomSheetOpen }) {
     setCurrentStep(selectedValue);
   };
 
+  const getStepPercent = () => {
+    return `${100 - (currentStep() / totalStep()) * 100}%`;
+  };
+
   return (
     <section class={styles.BottomBar}>
       <Show when={selectedAlgo()}>
@@ -48,6 +52,7 @@ function BottomController({ triggerBottomSheetOpen }) {
           type="range"
           min={0}
           max={totalStep() - 1}
+          style={{ "background-position": getStepPercent() }}
           value={currentStep()}
           onInput={handleSlideClick}
         />
