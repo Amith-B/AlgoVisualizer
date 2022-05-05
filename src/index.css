@@ -58,6 +58,7 @@ code {
 .blur-modal {
   background-color: rgba(43, 43, 43, 0.9);
   z-index: 11;
+  box-shadow: 0 0 6px black;
 }
 
 /* if backdrop support: very transparent and blurred */
@@ -66,7 +67,6 @@ code {
     background-color: #35363c7d;
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    z-index: 11;
   }
 }
 
@@ -87,7 +87,7 @@ code {
 .slider-range {
   -webkit-appearance: none;
   width: 100%;
-  height: 6px;
+  height: 4px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.9;
