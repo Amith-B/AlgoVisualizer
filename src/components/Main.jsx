@@ -8,7 +8,7 @@ import controls from "../store/createControl";
 
 function Main() {
   const [bottomSheetOpen, setBottomSheetOpen] = createSignal(false);
-  const { setPlaying, themeColor } = controls;
+  const { setPlaying, themeColor, themeTextColor } = controls;
 
   const handleBottomSheetOpen = (open) => {
     setBottomSheetOpen(open);
@@ -22,6 +22,7 @@ function Main() {
       class={styles.Main}
       style={{
         "--primary": themeColor(),
+        "--textColor": themeTextColor(),
       }}
     >
       <Header />

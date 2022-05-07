@@ -1,7 +1,7 @@
 import { createSignal, createRoot, createEffect, untrack } from "solid-js";
 import algos from "../algorithms";
 import { getAlgoList } from "../utils/stringUtil";
-import { generateHslaColors } from "../utils/colorUtil";
+import { generateHslaColors, getBrightess } from "../utils/colorUtil";
 import { getStepWiseArray } from "../utils/arrayUtil";
 import { shuffleArray } from "../utils/arrayUtil";
 import { createStore } from "solid-js/store";
@@ -30,6 +30,7 @@ function createControl() {
   const [stepWiseArray, setStepWiseArray] = createSignal([]);
   const [selectedAlgo, setSelectedAlgo] = createSignal("");
   const [colorList, setColorList] = createSignal([]);
+  const [themeTextColor, setThemeTextColor] = createSignal("white");
 
   const [themeColor, setThemeColor] = createSignal(state.themeColor);
 
@@ -41,6 +42,11 @@ function createControl() {
       arraySize: arraySize(),
       themeColor: themeColor(),
     });
+  });
+
+  createEffect(() => {
+    const brightness = getBrightess(themeColor());
+    setThemeTextColor(brightness < 128 ? "white" : "black");
   });
 
   createEffect(() => {
@@ -141,6 +147,9 @@ function createControl() {
 
     themeColor,
     setThemeColor,
+
+    themeTextColor,
+    setThemeTextColor,
   };
 }
 

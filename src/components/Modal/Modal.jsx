@@ -67,8 +67,11 @@ function Modal(props) {
       ></div>
       <div class="modal blur-modal">
         <header class="modal-header">
-          <h3>Settings</h3>
-          <button class="controls" onClick={props.triggerClose}>
+          <h3 class="theme-text__color">Settings</h3>
+          <button
+            class="controls theme-text__color"
+            onClick={props.triggerClose}
+          >
             <span class="material-symbols-outlined">close</span>
           </button>
         </header>

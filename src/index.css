@@ -25,6 +25,7 @@ code {
 }
 
 :root {
+  --textColor: "white";
   --primary: #446b9e;
   --visualizer: #222222;
   --secondary: #ffb021;
@@ -119,4 +120,8 @@ code {
   width: 10px;
   height: 10px;
   background: var(--secondary);
+}
+
+.theme-text__color {
+  color: var(--textColor);
 }

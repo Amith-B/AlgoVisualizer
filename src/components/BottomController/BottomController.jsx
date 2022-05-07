@@ -57,11 +57,14 @@ function BottomController({ triggerBottomSheetOpen }) {
           onInput={handleSlideClick}
         />
       </Show>
-      <div class={styles.AlgoName} onClick={triggerBottomSheetOpen}>
+      <div
+        classList={{ [styles.AlgoName]: true, "theme-text__color": true }}
+        onClick={triggerBottomSheetOpen}
+      >
         {selectedAlgo() ? getAlgorithmName() : "Please Select Algorithm"}
       </div>
       <Show when={selectedAlgo() && totalStep() !== 0}>
-        <div>
+        <div class="theme-text__color">
           {currentStep() + 1}/{totalStep()}
         </div>
       </Show>
@@ -69,7 +72,7 @@ function BottomController({ triggerBottomSheetOpen }) {
       <Show when={currentStep() !== totalStep() - 1 && selectedAlgo()}>
         <button
           onClick={handlePlayToggle}
-          class="controls"
+          class="controls theme-text__color"
           title={playing() ? "Pause" : "Play"}
         >
           {playing() ? (
@@ -80,12 +83,20 @@ function BottomController({ triggerBottomSheetOpen }) {
         </button>
       </Show>
       <Show when={selectedAlgo() && currentStep() !== -1}>
-        <button onClick={handleReset} class="controls" title="Reset">
+        <button
+          onClick={handleReset}
+          class="controls theme-text__color"
+          title="Reset"
+        >
           <span class="material-symbols-outlined">restart_alt</span>
         </button>
       </Show>
       <Show when={selectedAlgo() && !playing() && currentStep() === -1}>
-        <button onClick={handleShuffle} class="controls" title="Shuffle">
+        <button
+          onClick={handleShuffle}
+          class="controls theme-text__color"
+          title="Shuffle"
+        >
           <span class="material-symbols-outlined">shuffle</span>
         </button>
       </Show>
