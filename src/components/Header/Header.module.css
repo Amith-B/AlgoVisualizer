@@ -9,3 +9,18 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.GitHubLink {
+  width: 2rem;
+  height: 2rem;
+}
+
+.GitHubLinkInvert {
+  filter: invert(1);
+}
+
+.BtnGrp {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
